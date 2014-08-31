@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825021323) do
+ActiveRecord::Schema.define(version: 20140830033159) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 20140825021323) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "title"
   end
 
+  add_index "pins", ["title"], name: "index_pins_on_title"
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
 
   create_table "users", force: true do |t|
@@ -56,6 +58,10 @@ ActiveRecord::Schema.define(version: 20140825021323) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

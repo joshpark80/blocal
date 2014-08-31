@@ -1,0 +1,22 @@
+<%= link_to 'Back', @pin %>
+
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">	
+	 <div class="panel panel-default">
+	 <div class="panel-heading">
+	  <p style="font-size:14pt; color:#c0392b; font-weight:bold; margin:0px;"><%= @comment.place_name %></p>
+	 </div>
+	 <div class="panel-body">
+	  <%= image_tag @comment.image.url(:medium) %>	
+	  <p><%= @comment.body %></p>
+	  <p>by <strong><%= @pin.user.name if @pin.user %> </strong></p>
+	  	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
+	 </div>
+ 	</div>
+ <div>
+
+
+
+
+
+

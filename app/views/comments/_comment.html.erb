@@ -1,11 +1,14 @@
 <div id="pins" class="transitions-enabled">
     <% @pin.comments.each do |comment| %>
      <div class="box panel panel-default">
-	  <%= image_tag comment.image.url(:medium) %>
+            <%= link_to image_tag(comment.image.url(:medium)), [comment.pin, comment] %>
         <div class="panel-body">
           <p><%= comment.place_name %></p>
           <p><%= comment.body %></p>
        </div>
       </div>
     <% end %>
-</div>
+</div> 
+ 
+
+

@@ -3,17 +3,24 @@
 <div class="row">
 	<div class="col-md-offset-2 col-md-8">	
 	 <div class="panel panel-default">
-	 <div class="panel-heading center">
-	  <%= image_tag @pin.image.url(:medium) %>
+	 <div class="panel-heading">
+	  <p style="font-size:14pt; color:#c0392b; font-weight:bold; margin:0px;"><%= @pin.title %></p>
 	 </div>
 	 <div class="panel-body">
 	  <p><%= @pin.description %></p>
-	  <p><strong><%= @pin.user.name if @pin.user %> </strong></p>
+	  <p>by <strong><%= @pin.user.name if @pin.user %> </strong></br>
+	  updated at <%= time_ago_in_words(@pin.updated_at) %> ago</p>
+
+
 	<% if user_signed_in? %>
 	 <% if @pin.user == current_user %>
 	  <%= link_to edit_pin_path(@pin) do %> 
 	    <span class="glyphicon glyphicon-edit"></span>
         Edit
+      <% end %>
+      <%= link_to @pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span>
+        Delete
       <% end %>
 	 <% end %>
 	<% end %>
@@ -22,10 +29,12 @@
  <div>
 
 <%= render "comments/comment" %>
-
-<% if @pin.user == current_user %>
-<h4>Add a place:</h4>
-<%= render "comments/form" %>
+	
+<% if user_signed_in? %>
+	<% if @pin.user == current_user %>
+	<h4>Add a place:</h4>
+	<%= render "comments/form" %>
+	<% end %>
 <% end %>
 
 
