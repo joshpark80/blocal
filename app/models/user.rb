@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "100x100#", :thumb => "50x50#" }
   do_not_validate_attachment_file_type :image
 
+  has_many :favorite_pins, foreign_key:"favorited_id"  
+  has_many :favorites, through: :favorite_pins, source: :favorite
+
 end

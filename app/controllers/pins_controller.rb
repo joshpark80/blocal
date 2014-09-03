@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :favorite]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -49,6 +49,21 @@ class PinsController < ApplicationController
       format.html { redirect_to pins_url }
       format.json { head :no_content }
     end
+  end
+
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @pin
+      redirect_to :back, notice: 'You favorited #{@pin.title}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@pin)
+      redirect_to :back, notice: 'Unfavorited #{@pin.title}'
+
+    else
+      redirect_to :back, notice: 'Nothing happened'
+    end  
   end
 
   private

@@ -1,4 +1,5 @@
 Pinteresting::Application.routes.draw do
+
   get "profiles/show"
 
   resources :pins do
@@ -11,6 +12,11 @@ Pinteresting::Application.routes.draw do
   get "about" => "pages#about"
 
   get "/:id", to: "profiles#show"
+
+  resources :pins do
+    put :favorite, on: :member
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -28,6 +28,21 @@
  	</div>
  <div>
 
+<% unless current_user.favorites.exists?(id: @pin.id) %>
+
+  <%= link_to favorite_pin_path(@pin, type: "favorite"), method: :put do %>
+  "favorite"
+  <% end %>
+
+<% else %>
+
+  <%= link_to favorite_pin_path(@pin, type: "unfavorite"), method: :put do %>
+  "unfavorite"
+  <% end %>
+
+<% end %> 
+
+
 <%= render "comments/comment" %>
 	
 <% if user_signed_in? %>
