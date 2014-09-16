@@ -41,9 +41,49 @@
 	height: 50px;
 	border-radius: 50%;
 	position: relative;
+}
+
+.listprofile img {
 	float: right;
 	margin-top: -35px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: #ffffff;
 }
+
+.showprofile img {
+	border-style: solid;
+	border-width: 2px;
+	border-color: #000000;
+	margin-bottom: 15px;
+}
+
+.mainprofile img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: relative;
+	border-style:solid; 
+	border-width:2px; 
+	border-color:#eeeeee;
+}
+
+.tab {
+	display:none;
+}
+
+.tab.active {
+	display:block;
+}
+
+.nav > li img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	position: relative;
+	border-style:solid; 
+	border-width:2px; 
+	border-color:#eeeeee;
+}
+
+

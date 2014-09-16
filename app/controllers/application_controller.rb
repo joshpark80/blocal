@@ -12,6 +12,9 @@ protected
    devise_parameter_sanitizer.for(:account_update) << :name
    devise_parameter_sanitizer.for(:sign_up) << :image
    devise_parameter_sanitizer.for(:account_update) << :image
+   devise_parameter_sanitizer.for(:sign_up) << :description
+   devise_parameter_sanitizer.for(:account_update) << :description
+
  end
  
 end

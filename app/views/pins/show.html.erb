@@ -4,12 +4,30 @@
 	<div class="col-md-offset-2 col-md-8">	
 	 <div class="panel panel-default">
 	 <div class="panel-heading">
-	  <p style="font-size:14pt; color:#c0392b; font-weight:bold; margin:0px;"><%= @pin.title %></p>
+	  <p style="font-size:18pt; color:#000000; font-weight:bold; margin:0px;"><%= @pin.title %>
+
+<% if user_signed_in? %>
+<% unless current_user.favorites.exists?(id: @pin.id) %>
+  <%= link_to favorite_pin_path(@pin, type: "favorite"), method: :put do %>
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">FOLLOW THIS LIST</div>
+  <% end %>
+<% else %>
+  <%= link_to favorite_pin_path(@pin, type: "unfavorite"), method: :put do %>
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">FOLLOWING THIS LIST</div>
+  <% end %>
+<% end %> 
+<% else %>
+
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:200px; padding: 0 5px 0 5px; text-align:center;"><%= link_to "SIGN IN AND FOLLOW THIS LIST", new_user_session_path %></div>
+
+<% end %> 
+
+	  </p>
 	 </div>
 	 <div class="panel-body">
 	  <p><%= @pin.description %></p>
-	  <p>by <strong><%= @pin.user.name if @pin.user %> </strong></br>
-	  updated at <%= time_ago_in_words(@pin.updated_at) %> ago</p>
+	  updated at <%= time_ago_in_words(@pin.updated_at) %> ago</p> 
+        <div class="profile showprofile">by <a href="/<%= @pin.user.name %>"><strong><%= @pin.user.name.truncate(15) if @pin.user %> </strong><%= image_tag(@pin.user.image.url(:thumb)) %></a></div>
 
 
 	<% if user_signed_in? %>
@@ -27,21 +45,6 @@
 	 </div>
  	</div>
  <div>
-
-<% unless current_user.favorites.exists?(id: @pin.id) %>
-
-  <%= link_to favorite_pin_path(@pin, type: "favorite"), method: :put do %>
-  "favorite"
-  <% end %>
-
-<% else %>
-
-  <%= link_to favorite_pin_path(@pin, type: "unfavorite"), method: :put do %>
-  "unfavorite"
-  <% end %>
-
-<% end %> 
-
 
 <%= render "comments/comment" %>
 	

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comments = Comment.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 16)
+    @comments = Comment.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 25)
   end
 
   def show
@@ -25,6 +25,6 @@ class CommentsController < ApplicationController
     end        
     
     def comment_params
-      params.require(:comment).permit(:pin_id, :comment, :body, :image, :place_name)
+      params.require(:comment).permit(:pin_id, :comment, :body, :image, :place_name, :neighborhood, :country, :city, :keyword, :address, :phone, :keyword, :additional)
     end
 end

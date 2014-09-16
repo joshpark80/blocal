@@ -12,13 +12,13 @@
 
      <div class="place-placeholder" style="width:800px; float:left; margin-left:20px;">
       <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#">List Following</a></li>
-        <li><a href="/<%= @user.name %>/createdlist">List Created</a></li>
+        <li><a href="/<%= @user.name %>">List Following</a></li>
+        <li class="active"><a href="#">List Created</a></li>
         <li><a href="#">Place Collected</a></li>        
       </ul>
 
 
-<%= render "profiles/favlist" %>
+<%= render "profiles/crtedlist" %>
 
 
      </div>

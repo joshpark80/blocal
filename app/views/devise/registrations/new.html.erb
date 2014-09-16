@@ -28,6 +28,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.submit "Sign up", class: "btn btn-primary" %>
       </div>
     <% end %>

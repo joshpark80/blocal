@@ -1,15 +1,18 @@
-<div id="pins" class="transitions-enabled">
-    <% @pin.comments.each do |comment| %>
+ <%= render 'pages/home' unless user_signed_in? %>
+
+ <div id="pins" class="transitions-enabled">
+    <% @comments.each do |comment| %>
      <div class="box panel panel-default">
             <%= link_to image_tag(comment.image.url(:medium)), [comment.pin, comment] %>
         <div class="panel-body">
-          <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name.truncate(15) %></p>
+          <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name %></p>
           <p style="font-size: 10pt;"><%= comment.body.truncate(150) %></p>
           <p style="font-size: 10pt;">updated at <%= time_ago_in_words(comment.updated_at) %> ago</p> 
        </div>
       </div>
     <% end %>
-</div> 
- 
+</div>
 
-
+<div class="center">
+   <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+</div>

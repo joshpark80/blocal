@@ -4,7 +4,8 @@ class PinsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 16)
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 16) 
+    @comments = Comment.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 16)
   end
 
   def show
@@ -55,11 +56,11 @@ class PinsController < ApplicationController
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @pin
-      redirect_to :back, notice: 'You favorited #{@pin.title}'
+      redirect_to :back, notice: 'You are now following this list.'
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@pin)
-      redirect_to :back, notice: 'Unfavorited #{@pin.title}'
+      redirect_to :back, notice: 'You are not following this list anymore.'
 
     else
       redirect_to :back, notice: 'Nothing happened'

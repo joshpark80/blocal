@@ -1,19 +1,46 @@
-<%= link_to 'Back', @pin %>
-
 <div class="row">
-	<div class="col-md-offset-2 col-md-8">	
-	 <div class="panel panel-default">
+  <div class="col-md-offset-2 col-md-8">	
+	<div class="panel panel-default">
 	 <div class="panel-heading">
-	  <p style="font-size:14pt; color:#c0392b; font-weight:bold; margin:0px;"><%= @comment.place_name %></p>
+	  <p style="font-size:14pt; font-weight:bold; margin:0px;"><%= @comment.place_name %> 
+	  	<span style="font-size:10pt; font-weight:bold;">      
+	  		@ <%= @comment.neighborhood %>, <%= @comment.city %>, <%= @comment.country %>
+	  	</span>
+      </p>
+      <p>from the list "<%= link_to @pin.title, @pin %>"</p>
+
 	 </div>
+	 
 	 <div class="panel-body">
-	  <%= image_tag @comment.image.url(:medium) %>	
-	  <p><%= @comment.body %></p>
-	  <p>by <strong><%= @pin.user.name if @pin.user %> </strong></p>
-	  	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
+
+	   <div class="place-photo" style="width:500px; height:400px; margin-right:10px; float:left; border-style:solid; border-color:grey;">
+	   <%= image_tag @comment.image.url(:medium) %>	
+	   </div>
+	   <div class="place-author" style="width:200px; padding-top:10px; height:400px; float:left; text-align:center; border-style:solid; border-color:grey;">
+	    <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
+        <%= image_tag(@pin.user.image.url(:medium)) %>
+        </div>
+	   <p><strong><a href="/<%= @pin.user.name %>"><%= @pin.user.name if @pin.user %></a></strong></p>
+	    <div class="user-desc" style="margin: 15px; padding: 10px;text-align:left; border-top-style: solid;border-top-width: 2px;border-top-color: grey;">
+	    <%= @pin.user.description if @pin.user %> 
+	    </div>	
+	   </div>
+
+	  <div class="place-body" style="width:500px; float:left; margin-top:10px; padding:20px; border-style:solid; border-color:grey;">
+      <p style="font-weight:bold;">Keywords: <%= @comment.keyword %></p>
+	  <p>"<%= @comment.body %>"</p>
+	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
+	  </br>
+      <p><%= @comment.address %></p>
+      <p><%= @comment.phone %></p>
+      <p><%= @comment.additional %></p>
+      </div>
+
+
 	 </div>
- 	</div>
- <div>
+	</div>
+  </div>
+</div>
 
 
 

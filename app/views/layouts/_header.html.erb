@@ -16,6 +16,7 @@
  
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Trending", comments_index_path %></li>
         <li><%= link_to "About Us", about_path %></li>
         <% if user_signed_in? %>
           <li>
@@ -23,9 +24,11 @@
             <span class="glyphicon glyphicon-plus"></span> New List
             <% end %>
           </li>          
+          <li><%= image_tag(current_user.image.url(:thumb)) %></li> 
+          <li><a href="/<%= current_user.name %>" style="padding-left:2.5px;"><%= current_user.name %></a></li>
+          <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-          </li>   
-          <li><%= link_to "Account Settings", edit_user_registration_path %></li>          
+          </li>             
         <% else %>
           <li><%= link_to "Sign in", new_user_session_path %></li>
         <% end %>

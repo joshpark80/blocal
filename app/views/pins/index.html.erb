@@ -1,17 +1,26 @@
  <%= render 'pages/home' unless user_signed_in? %>
 
+ <div class="photo-category firstrow" style="width:1040px; margin-left:auto; margin-right:auto; padding:10px;">
+  <a href="/#"><img src="/assets/main1_paris.png" style="margin-right: 20px; width: 680px; height:340px;"></a> 
+  <a href="/#"><img src="/assets/main2_milan.png" style="width: 316px; height:340px;"></a> 
+  </div>
+  <div class="photo-category secondrow" style="width:1040px; margin-left:auto; margin-right:auto; padding:10px;">
+  <a href="/#"><img src="/assets/main5_dubro.png" style="width: 328px; height:340px; margin-right: 20px;"></a> 
+  <a href="/#"><img src="/assets/main3_rome.png" style="width: 328px; height:340px; margin-right: 20px;"></a> 
+  <a href="/#"><img src="/assets/main4_hk.png" style="width: 316px; height:340px;"></a> 
+ </div>
+
  <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
      <div class="list box panel panel-default">
       <%= link_to image_tag(pin.image.url(:croppable)), pin %>
-        <div class="panel-body" style="height:120px;">
+        <div class="panel-body" style="height:140px;">
           <div class="favorite">  
             <span class="glyphicon glyphicon-heart"></span>
           </div>
-          <div class="profile"><%= image_tag(pin.user.image.url(:thumb)) %>  
-            <strong> <%= pin.title.truncate(20) %> </strong> </br>
-            by <a href="/<%= pin.user.name %>"><strong><%= pin.user.name.truncate(15) if pin.user %> </strong></a>
-          <p style="height:40px;"><%= pin.description.truncate(33) %> </p>
+          <div class="profile listprofile"><%= image_tag(pin.user.image.url(:thumb)) %>  
+            <p style="font-size:11pt; font-weight:bold; margin-bottom: 0px;"><%= pin.title.truncate(20) %> </p> by <a href="/<%= pin.user.name %>"><strong><%= pin.user.name.truncate(15) if pin.user %> </strong></a>
+          <p style="height:60px;"><%= pin.description.truncate(33) %> </p>
             </div>
             </br>
        </div>

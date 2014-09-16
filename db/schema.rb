@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903021603) do
+ActiveRecord::Schema.define(version: 20140906144937) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20140903021603) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.string   "place_name"
+    t.string   "country"
+    t.string   "city"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "keyword"
+    t.string   "additional"
+    t.string   "neighborhood"
   end
 
   add_index "comments", ["pin_id"], name: "index_comments_on_pin_id"
@@ -73,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140903021603) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
