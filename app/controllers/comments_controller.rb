@@ -15,14 +15,7 @@ class CommentsController < ApplicationController
   def create
     @pin = Pin.find(params[:pin_id])
     @comment = @pin.comments.create!(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
-    end
+    redirect_to pin_path(@pin)
   end
 
   def edit

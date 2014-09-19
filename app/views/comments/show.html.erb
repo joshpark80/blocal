@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">	
-	<div class="panel panel-default">
+
+	<div class="panel panel-default" style="float:left;">
 	 <div class="panel-heading">
 	  <p style="font-size:14pt; font-weight:bold; margin:0px;"><%= @comment.place_name %> 
 	  	<span style="font-size:10pt; font-weight:bold;">      
@@ -30,10 +31,64 @@
 
 	 <div class="panel-body">
 
-	   <div class="place-photo" style="width:500px; height:400px; margin-right:10px; float:left; border-style:solid; border-color:grey;">
-	   <%= image_tag @comment.image.url(:medium) %>	
+	   <div class="place-photo" style="width:500px;">
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>	
+      <div class="carousel-caption">
+        first picture
+      </div>
+    </div>
+    <div class="item">
+	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>
+      <div class="carousel-caption">
+      	second picture
+      </div>
+    </div>
+    <div class="item">
+	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>
+      <div class="carousel-caption">
+      	third picture
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+<div style="padding:20px;">
+      <p style="font-weight:bold;">Keywords: <%= @comment.keyword %></p>
+	  <p>"<%= @comment.body %>"</p>
+	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
+	  </br>
+      <p><%= @comment.address %></p>
+      <p><%= @comment.phone %></p>
+      <p><%= @comment.additional %></p>
+</div>
+
 	   </div>
-	   <div class="place-author" style="width:200px; padding-top:10px; height:400px; float:left; text-align:center; border-style:solid; border-color:grey;">
+	 </div>
+	</div>
+
+ 	<div class="panel panel-default" style="float:left; margin-left:10px;">
+	   <div class="place-author" style="width:200px; padding-top:10px; float:left; text-align:center;">
 	    <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
         <%= image_tag(@pin.user.image.url(:medium)) %>
         </div>
@@ -42,20 +97,8 @@
 	    <%= @pin.user.description if @pin.user %> 
 	    </div>	
 	   </div>
-
-	  <div class="place-body" style="width:500px; float:left; margin-top:10px; padding:20px; border-style:solid; border-color:grey;">
-      <p style="font-weight:bold;">Keywords: <%= @comment.keyword %></p>
-	  <p>"<%= @comment.body %>"</p>
-	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
-	  </br>
-      <p><%= @comment.address %></p>
-      <p><%= @comment.phone %></p>
-      <p><%= @comment.additional %></p>
-      </div>
-
-
-	 </div>
 	</div>
+
   </div>
 </div>
 
