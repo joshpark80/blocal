@@ -1,19 +1,17 @@
-   <div id="tab1" class="tab active">
-    <div id="pins" class="transitions-enabled">
-    <% @user.pins.each do |pin| %>
-     <div class="list box panel panel-default">
-      <%= link_to image_tag(pin.image.url(:croppable)), pin %>
-        <div class="panel-body" style="height:140px;">
-          <div class="favorite"> 
-            <span class="glyphicon glyphicon-heart"></span>
-          </div>
-          <div class="profile listprofile"><%= image_tag(pin.user.image.url(:thumb)) %> 
-            <p style="font-size:13pt; font-weight:bold; margin-bottom: 0px;"><%= pin.title.truncate(15) %> </p> by <a href="/<%= pin.user.name %>"><strong><%= pin.user.name.truncate(15) if pin.user %> </strong></a>
-          <p style="height:60px;"><%= pin.description.truncate(33) %> </p>
-            </div>
-            </br>
+<div id="tab1" class="tab active">
+ <div id="pins" class="transitions-enabled">
+    <% @user.collects.each do |comment| %>
+     <div class="box panel panel-default">
+            <%= link_to image_tag(comment.image.url(:medium)), [comment.pin, comment] %>
+        <div class="panel-body">
+          <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name %></p>
+          <p style="font-size: 10pt;"><%= comment.body.truncate(150) %></p>
+          <p style="font-size: 10pt;">updated at <%= time_ago_in_words(comment.updated_at) %> ago</p> 
+
+
+
        </div>
       </div>
     <% end %>
-    </div>
-   </div>
+</div>
+</div>

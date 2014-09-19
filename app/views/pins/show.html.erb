@@ -50,6 +50,11 @@
 	
 <% if user_signed_in? %>
 	<% if @pin.user == current_user %>
+
+            <%= link_to new_comment_path do %>
+            <span class="glyphicon glyphicon-plus"></span> New Place
+            <% end %>
+
 	<h4>Add a place:</h4>
 	<%= render "comments/form" %>
 	<% end %>

@@ -10,5 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :favorite_pins, foreign_key:"favorited_id"  
   has_many :favorites, through: :favorite_pins, source: :favorite
+  has_many :collect_comments, foreign_key:"collected_id"  
+  has_many :collects, through: :collect_comments, source: :collect
+
 
 end

@@ -6,9 +6,25 @@
           <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name.truncate(15) %></p>
           <p style="font-size: 10pt;"><%= comment.body.truncate(150) %></p>
           <p style="font-size: 10pt;">updated at <%= time_ago_in_words(comment.updated_at) %> ago</p> 
+
+
+            <% if user_signed_in? %>
+   <% if @pin.user == current_user %>
+    <%= link_to edit_comment_path(comment) do %> 
+      <span class="glyphicon glyphicon-edit"></span>
+        Edit
+      <% end %>
+      <%= link_to comment, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span>
+        Delete
+      <% end %>
+   <% end %>
+  <% end %>
        </div>
       </div>
     <% end %>
+
+
 </div> 
  
 

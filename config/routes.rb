@@ -18,6 +18,7 @@ Pinteresting::Application.routes.draw do
 
   get "/:id", to: "profiles#show"
   get "/:id/createdlist", to: "profiles#createdlist"
+  get "/:id/collectedplaces", to: "profiles#collectedplaces"
 
  
   get "comments_index" => "comments#index"
@@ -25,6 +26,10 @@ Pinteresting::Application.routes.draw do
 
   resources :pins do
     put :favorite, on: :member
+  end
+
+  resources :comments do
+    put :collect, on: :member
   end
 
 

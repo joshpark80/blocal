@@ -9,8 +9,25 @@
       </p>
       <p>from the list "<%= link_to @pin.title, @pin %>"</p>
 
+<% if user_signed_in? %>
+<% unless current_user.collects.exists?(id: @comment.id) %>
+  <%= link_to collect_comment_path(@comment, type: "collect"), method: :put do %>
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">COLLECT</div>
+  <% end %>
+<% else %>
+  <%= link_to collect_comment_path(@comment, type: "uncollect"), method: :put do %>
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">UNCOLLECT</div>
+  <% end %>
+<% end %> 
+<% else %>
+
+  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:200px; padding: 0 5px 0 5px; text-align:center;"><%= link_to "SIGN IN AND COLLECT THIS PLACE", new_user_session_path %></div>
+
+<% end %> 
+
 	 </div>
 	 
+
 	 <div class="panel-body">
 
 	   <div class="place-photo" style="width:500px; height:400px; margin-right:10px; float:left; border-style:solid; border-color:grey;">
