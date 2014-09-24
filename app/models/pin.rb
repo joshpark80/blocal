@@ -1,6 +1,6 @@
 class Pin < ActiveRecord::Base
 	belongs_to :user
-	has_many :comments
+	has_many :comments, :order => 'created_at DESC'
 	has_attached_file :image, :styles => { :croppable => '240x240#', :medium => "300x300>", :thumb => "100x100>" }
 	do_not_validate_attachment_file_type :image
     has_many :favorite_pins, foreign_key: "favorite_id"                                
