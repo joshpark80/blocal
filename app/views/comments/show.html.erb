@@ -37,8 +37,18 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <% if @comment.photo? %>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <% end %>
+    <% if @comment.photo2? %>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <% end %>
+    <% if @comment.photo3? %>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <% end %>
+    <% if @comment.photo4? %>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -46,21 +56,41 @@
     <div class="item active">
 	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>	
       <div class="carousel-caption">
-        first picture
+
       </div>
     </div>
+    <% if @comment.photo? %>
     <div class="item">
-	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>
+	   <%= image_tag @comment.photo.url(:medium), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
-      	second picture
+
       </div>
     </div>
+    <% end %>
+    <% if @comment.photo2? %>
     <div class="item">
-	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>
+     <%= image_tag @comment.photo2.url(:medium), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
-      	third picture
+
       </div>
     </div>
+    <% end %>
+    <% if @comment.photo3? %>
+    <div class="item">
+     <%= image_tag @comment.photo3.url(:medium), :class => "carousel-imagetag" %>
+      <div class="carousel-caption">
+        
+      </div>
+    </div>
+    <% end %>
+    <% if @comment.photo4? %>
+    <div class="item">
+     <%= image_tag @comment.photo4.url(:medium), :class => "carousel-imagetag" %>
+      <div class="carousel-caption">
+        
+      </div>
+    </div>
+    <% end %>
 
   </div>
 
