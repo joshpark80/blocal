@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-md-offset-2 col-md-10">	
+  <div class="col-md-offset-2 col-md-6">	
 
-	<div class="panel panel-default" style="float:left;">
+	<div class="panel panel-default">
 	 <div class="panel-heading">
 	  <p style="font-size:14pt; font-weight:bold; margin:0px;"><%= @comment.place_name %> 
 	  	<span style="font-size:10pt; font-weight:bold;">      
@@ -31,7 +31,7 @@
 
 	 <div class="panel-body">
 
-	   <div class="place-photo" style="width:500px;">
+	   <div class="place-photo">
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -54,14 +54,14 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-	   <%= image_tag @comment.image.url(:medium), :class => "carousel-imagetag" %>	
+	   <%= image_tag @comment.image.url(:med), :class => "carousel-imagetag" %>	
       <div class="carousel-caption">
 
       </div>
     </div>
     <% if @comment.photo? %>
     <div class="item">
-	   <%= image_tag @comment.photo.url(:medium), :class => "carousel-imagetag" %>
+	   <%= image_tag @comment.photo.url(:med), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
 
       </div>
@@ -69,7 +69,7 @@
     <% end %>
     <% if @comment.photo2? %>
     <div class="item">
-     <%= image_tag @comment.photo2.url(:medium), :class => "carousel-imagetag" %>
+     <%= image_tag @comment.photo2.url(:med), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
 
       </div>
@@ -77,7 +77,7 @@
     <% end %>
     <% if @comment.photo3? %>
     <div class="item">
-     <%= image_tag @comment.photo3.url(:medium), :class => "carousel-imagetag" %>
+     <%= image_tag @comment.photo3.url(:med), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
         
       </div>
@@ -85,7 +85,7 @@
     <% end %>
     <% if @comment.photo4? %>
     <div class="item">
-     <%= image_tag @comment.photo4.url(:medium), :class => "carousel-imagetag" %>
+     <%= image_tag @comment.photo4.url(:med), :class => "carousel-imagetag" %>
       <div class="carousel-caption">
         
       </div>
@@ -112,7 +112,31 @@
       <p><%= @comment.phone %></p>
       <p><%= @comment.additional %></p>
 
+  <% if user_signed_in? %>
+   <% if @pin.user == current_user %>
+<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+  EDIT THIS PLACE
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">EDIT THIS PLACE</h4>
+      </div>
+      <div class="modal-body">
+  <%= render "edit" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+   <% end %>
+  <% end %>
       
 </div>
 
@@ -120,7 +144,9 @@
 	 </div>
 	</div>
 
- 	<div class="panel panel-default" style="float:left; margin-left:10px;">
+
+  <div class="col-md-2"> 
+ 	<div class="panel panel-default" style="float:left;">
 	   <div class="place-author" style="width:200px; padding-top:10px; float:left; text-align:center;">
 	    <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
         <%= image_tag(@pin.user.image.url(:medium)) %>

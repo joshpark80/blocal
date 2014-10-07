@@ -18,11 +18,10 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Trending", comments_index_path %></li>
         <% if user_signed_in? %>
-        <li><%= image_tag(current_user.image.url(:thumb)) %></li> 
         <li>
             <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="padding-top:12.5px; padding-bottom:12.5px; border:none;">
-            <%= current_user.name %>
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style="padding-top:5px; padding-bottom:5px; border:none;">
+            <%= image_tag(current_user.image.url(:thumb)) %> <%= current_user.name %>
             <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">

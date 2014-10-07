@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update]
-  before_action :set_collect, only: [:collect, :destroy]
+  before_action :set_comment, only: [:show]
+  before_action :set_collect, only: [:edit, :update, :collect, :destroy]
 
   def index
     @comments = Comment.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 25)
@@ -19,12 +19,13 @@ class CommentsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Place was successfully updated.' }
+        format.html { redirect_to [@comment.pin, @comment], notice: 'Place was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
