@@ -1,21 +1,23 @@
-<div class="profile-row" style="width:1040px; margin:auto;">
+<div class="row" style="">
      
-     <div class="place-author" style="width:200px; padding-top:10px; float:left; text-align:center; border-style:solid; border-color:grey;">
+     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="padding-top:10px; float:left; text-align:center; margin-bottom:0px; background-color:white;">
       <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
         <%= image_tag(@user.image.url(:medium)) %>
         </div>
-     <p><strong><a href="/<%= @user.name %>"><%= @user.name %></a></strong></p>
-      <div class="user-desc" style="margin: 15px; padding: 10px;text-align:left; border-top-style: solid;border-top-width: 2px;border-top-color: grey;">
+     <p style="font-size:20px;"><strong><a href="/<%= @user.name %>"><%= @user.name %></a></strong></p>
+      <div class="user-desc" style="margin: 5px; padding: 10px;text-align:center; border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: grey;">
       <%= @user.description %> 
       </div>  
      </div>
 
-     <div class="place-placeholder" style="width:800px; float:left; margin-left:20px;">
-      <ul class="nav nav-tabs" role="tablist">
+     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="background-color:white;">
+      <div style="width:240px; margin:auto;">
+      <ul class="nav nav-pills nav-justified">
         <li><a href="/<%= @user.name %>">List Following</a></li>
         <li class="active"><a href="#">List Created</a></li>
         <li><a href="/<%= @user.name %>/collectedplaces">Place Collected</a></li>        
       </ul>
+      </div>
 
 
 <%= render "profiles/crtedlist" %>
