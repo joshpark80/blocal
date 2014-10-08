@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   def show
   	@user = User.find_by_name(params[:id])
+    @favorites = @user.favorites.order("created_at DESC").paginate(:page => params[:page], :per_page => 18)
 
   	if @user 
   		
@@ -12,6 +13,7 @@ class ProfilesController < ApplicationController
 
   def createdlist
   	@user = User.find_by_name(params[:id])
+    @pins = @user.pins.order("created_at DESC").paginate(:page => params[:page], :per_page => 18)
  
   	if @user 
   		
@@ -23,6 +25,7 @@ class ProfilesController < ApplicationController
 
   def collectedplaces
     @user = User.find_by_name(params[:id])
+    @collects = @user.collects.order("created_at DESC").paginate(:page => params[:page], :per_page => 18)
 
     if @user 
       

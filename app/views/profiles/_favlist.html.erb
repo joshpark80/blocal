@@ -1,16 +1,26 @@
    <div id="tab1" class="tab active">
     <div id="pins" class="transitions-enabled">
-    <% @user.favorites.each do |pin| %>
+    <% @favorites.each do |pin| %>
      <div class="list box panel panel-default">
       <%= link_to image_tag(pin.image.url(:croppable)), pin %>
-        <div class="panel-body" style="height:140px;">
-          <div class="profile listprofile"><%= image_tag(pin.user.image.url(:thumb)) %> 
-            <p style="font-size:13pt; font-weight:bold; margin-bottom: 0px;"><%= pin.title.truncate(15) %> </p> by <a href="/<%= pin.user.name %>"><strong><%= pin.user.name.truncate(15) if pin.user %> </strong></a>
-          <p style="height:60px;"><%= pin.description.truncate(33) %> </p>
-            </div>
-            </br>
-       </div>
-      </div>
+        <div class="panel-body" style="height:130px; padding:15px;">
+          <div class="profile listprofile" style="font-weight:bold; height:40px; overflow:hidden; margin-bottom: 4px;">
+            <p style="font-size:15px; font-weight:bold; height:40px; margin:0; line-height:18px;"><%= pin.title %> </p> 
+          </div>
+          <div class="profile listuser" style="border-bottom: 1px solid #e2e2e2; margin-bottom: 8px; padding-bottom: 8px; font-size:12px; color: gray;">
+            <span class="glyphicon glyphicon-map-marker" style=" margin-left:2px; margin-right:4px;"></span><%= pin.comments.size %><span class="glyphicon glyphicon-heart" style=" margin-left:4px; margin-right:4px;"></span><%= pin.favorited_by.size %>
+          </div>
+          <div class="profile liststat" style="font-size:12px;">      
+            <a href="/<%= pin.user.name %>" style="color:#484848;"> <%= image_tag(pin.user.image.url(:thumb)) %>  <strong><%= pin.user.name.truncate(15) if pin.user %> </strong></a>
+          </div>
+        </div>
+     </div>
     <% end %>
     </div>
+
+<div class="center">
+   <%= will_paginate @favorites, renderer: BootstrapPagination::Rails %>
+</div>
+
    </div>
+

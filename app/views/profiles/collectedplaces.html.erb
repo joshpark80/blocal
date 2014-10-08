@@ -1,21 +1,23 @@
-<div class="row" style="">
-     
-     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="padding-top:10px; float:left; text-align:center; background-color: white;">
-      <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
+     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="text-align:center; background-color:white;">
+      <div class="mainprofile" style="padding-top:20px; padding-bottom:10px;">
         <%= image_tag(@user.image.url(:medium)) %>
         </div>
-     <p style="font-size:20px;"><strong><a href="/<%= @user.name %>"><%= @user.name %></a></strong></p>
-      <div class="user-desc" style="margin: 5px; padding: 10px;text-align:center; border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: grey;">
+     <p style="font-size:24px; line-height:1; letter-spacing: -1px; margin:0px;"><strong><a href="/<%= @user.name %>" style="color:rgba(0,0,0,0.72);"><%= @user.name %></a></strong></p>
+      <div class="user-desc" style="margin-top: 0px; padding: 10px 10% 0 10%; text-align:center; border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: grey; font-size:16px; line-height:1.4; color: rgba(0,0,0,0.51);">
       <%= @user.description %> 
+      </div>  
+      <div class="user-desc" style="font-size:16px; padding: 10px 10% 0 10%; margin-bottom:10px; color:#777;">
+        <span class="glyphicon glyphicon-th-list" style=" margin-right:8px;"></span><%= @user.pins.size %><span class="glyphicon glyphicon-heart" style=" margin-left:8px; margin-right:8px;"></span><%= @user.favorites.size %><span class="glyphicon glyphicon-map-marker" style=" margin-left:8px;"></span><%= @user.collects.size %>
       </div>  
      </div>
 
-     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="background-color: white;">
-      <div style="width:240px; margin:auto;">
+ 
+     <div class="col-xs-10 col-sm-10 col-md-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1" style="padding-top:0px; padding-bottom:10px; background-color:white; margin-bottom:20px;">
+      <div style="width: 80%; margin:auto; border-top:1px solid rgba(0,0,0,0.07); border-bottom:1px solid rgba(0,0,0,0.07); margin-bottom:10px;">
       <ul class="nav nav-pills nav-justified">
-        <li><a href="/<%= @user.name %>">List Following</a></li>
-        <li><a href="/<%= @user.name %>/createdlist">List Created</a></li>
-        <li class="active"><a href="#">Place Collected</a></li>        
+        <li><a href="/<%= @user.name %>" style="border-radius:0px; color:#777;">List Following</a></li>      
+        <li><a href="/<%= @user.name %>/createdlist" style="border-radius:0px; color:#777;">List Created</a></li>   
+        <li class="active"><a href="#" style="border-radius:0px; color:black; background-color:white; border-bottom:1px solid rgba(0,0,0,1); border-top:1px solid rgba(0,0,0,1);">Place Collected</a></li>       
       </ul>
       </div>
 
@@ -24,6 +26,5 @@
 
      </div>
 
-</div>
 
 
