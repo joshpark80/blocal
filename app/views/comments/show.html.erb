@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-offset-2 col-md-6">	
+  <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-2">	
 
 	<div class="panel panel-default">
 	 <div class="panel-heading">
@@ -33,7 +33,7 @@
 
 	   <div class="place-photo">
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -105,7 +105,7 @@
 
 <div style="padding:20px;">
       <p style="font-weight:bold;">Keywords: <%= @comment.keyword %></p>
-	  <p>"<%= @comment.body %>"</p>
+	  <p><%= @comment.body %></p>
 	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
 	  </br>
       <p><%= @comment.address %></p>
@@ -145,20 +145,21 @@
 	</div>
 
 
-  <div class="col-md-2 hidden-xs hidden-sm"> 
- 	<div class="panel panel-default" style="float:left;">
-	   <div class="place-author" style="width:200px; padding-top:10px; float:left; text-align:center;">
-	    <div class="mainprofile" style="width:100px; margin-left:auto; margin-right:auto; padding-top:20px; padding-bottom:20px;">
+  <div class="col-xs-12 col-sm-12 col-md-2" style="text-align:center;"> 
+  <div class="panel panel-default">
+<div class="mainprofile" style="padding-top:20px; padding-bottom:10px;">
         <%= image_tag(@pin.user.image.url(:medium)) %>
         </div>
-	   <p><strong><a href="/<%= @pin.user.name %>"><%= @pin.user.name if @pin.user %></a></strong></p>
-	    <div class="user-desc" style="margin: 15px; padding: 10px;text-align:left; border-top-style: solid;border-top-width: 2px;border-top-color: grey;">
-	    <%= @pin.user.description if @pin.user %> 
-	    </div>	
-	   </div>
+     <p style="font-size:20px; line-height:1; letter-spacing: -1px; margin:0px;"><strong><a href="/<%= @pin.user.name %>" style="color:rgba(0,0,0,0.72);"><%= @pin.user.name %></a></strong></p>
+      <div class="user-desc" style="margin-top: 0px; padding: 10px 10% 0 10%; text-align:center; border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: grey; font-size:14px; line-height:1.4; color: rgba(0,0,0,0.51);">
+      <%= @pin.user.description %> 
+      </div>  
+      <div class="user-desc" style="font-size:16px; padding: 10px 10% 0 10%; margin-bottom:20px; color:#777;">
+        <span class="glyphicon glyphicon-th-list" style=" margin-right:8px;"></span><%= @pin.user.pins.size %><span class="glyphicon glyphicon-heart" style=" margin-left:8px; margin-right:8px;"></span><%= @pin.user.favorites.size %><span class="glyphicon glyphicon-map-marker" style=" margin-left:8px;"></span><%= @pin.user.collects.size %>
+      </div>  
 	</div>
+</div>
 
-  </div>
 </div>
 
 
