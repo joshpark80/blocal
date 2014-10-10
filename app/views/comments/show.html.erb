@@ -3,12 +3,12 @@
 
 	<div class="panel panel-default">
 	 <div class="panel-heading">
-	  <p style="font-size:14pt; font-weight:bold; margin:0px;"><%= @comment.place_name %> 
-	  	<span style="font-size:10pt; font-weight:bold;">      
+	  <p style="font-size:24px; font-weight:bold; margin:0px;"><%= @comment.place_name %> 
+	  	<span style="font-size:15px; font-weight:bold;">      
 	  		@ <%= @comment.neighborhood %>, <%= @comment.city %>, <%= @comment.country %>
 	  	</span>
       </p>
-      <p>from the list "<%= link_to @pin.title, @pin %>"</p>
+      <p style="color:#666;">from the list "<%= link_to @pin.title, @pin %>"</p>
 
 <% if user_signed_in? %>
 <% unless current_user.collects.exists?(id: @comment.id) %>
@@ -105,7 +105,7 @@
 
 <div style="padding:20px;">
       <p style="font-weight:bold;">Keywords: <%= @comment.keyword %></p>
-	  <p><%= @comment.body %></p>
+	  <p style="font-size:15px; color:#333; line-height:1.8;"><%= @comment.body %></p>
 	  <p>updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
 	  </br>
       <p><%= @comment.address %></p>

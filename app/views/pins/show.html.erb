@@ -30,7 +30,7 @@
 	  </p>
 	 </div>
 	 <div class="panel-body">
-	  <p><%= @pin.description %></p>
+	  <p style="color:#333; font-size:15px; line-height:1.8"><%= @pin.description %></p>
 	  updated at <%= time_ago_in_words(@pin.updated_at) %> ago</p> 
         <div class="profile showprofile">by <a href="/<%= @pin.user.name %>"><strong><%= @pin.user.name.truncate(15) if @pin.user %> </strong><%= image_tag(@pin.user.image.url(:thumb)) %></a></div>
 
