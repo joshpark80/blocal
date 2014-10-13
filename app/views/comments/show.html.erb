@@ -13,11 +13,15 @@
 <% if user_signed_in? %>
 <% unless current_user.collects.exists?(id: @comment.id) %>
   <%= link_to collect_comment_path(@comment, type: "collect"), method: :put do %>
-  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">COLLECT</div>
+    <button type="button" class="btn btn-default btn-blocal">
+    COLLECT
+    </button>
   <% end %>
 <% else %>
   <%= link_to collect_comment_path(@comment, type: "uncollect"), method: :put do %>
-  <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">UNCOLLECT</div>
+    <button type="button" class="btn btn-default btn-blocal">
+    UNCOLLECT
+    </button>
   <% end %>
 <% end %> 
 <% else %>

@@ -3,6 +3,17 @@
     <% @collects.each do |comment| %>
      <div class="box panel panel-default">
             <%= link_to image_tag(comment.image.url(:medium)), [comment.pin, comment] %>
+
+<% unless current_user.collects.exists?(id: comment.id) %>
+  <%= link_to collect_comment_path(comment, type: "collect"), method: :put do %>
+  <div class="favorite"><span class="glyphicon glyphicon-heart"></span></div>
+  <% end %>
+<% else %>
+  <%= link_to collect_comment_path(comment, type: "uncollect"), method: :put do %>
+  <div class="unfavorite"><span class="glyphicon glyphicon-heart"></span></div>
+  <% end %>
+<% end %> 
+            
         <div class="panel-body">
           <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name %></p>
           <p style="font-size: 10pt;"><%= comment.body.truncate(150) %></p>

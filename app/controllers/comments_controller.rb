@@ -46,11 +46,11 @@ class CommentsController < ApplicationController
     type = params[:type]
     if type == "collect"
       current_user.collects << @comment
-      redirect_to :back, notice: 'Collect.'
+      redirect_to :back, notice: 'Collected.'
 
     elsif type == "uncollect"
       current_user.collects.delete(@comment)
-      redirect_to :back, notice: 'Uncollect.'
+      redirect_to :back, notice: 'Uncollected.'
 
     else
       redirect_to :back, notice: 'Nothing happened'

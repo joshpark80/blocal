@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 #pins {
 	margin: 0 auto;
 }
@@ -24,18 +23,29 @@
 
 .list img {
 	width: 100%;
-	height: 240px;
+	height: 200px;
 	border-radius: 6px 6px 0 0;
 }
 
 .favorite {
-	font-size: 30px;
-	position: relative;
-	float: right;
-	margin-top: -245px;
-	color: rgba(0,0,0,0.6);
+	font-size: 20px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 101;
+	color: rgba(0,0,0,0.3);
 	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
 
+.unfavorite {
+	font-size: 20px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 101;
+	color: #ea4c89;
+	opacity: 0.9;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
 .profile img {
@@ -103,4 +113,14 @@
     margin-top: 20px;
     margin-bottom: 40px;
     width: 141px;
+}
+
+.btn-blocal {
+	font-size: 8pt; 
+	font-weight: bold;
+	border-color: #333333;
+	border-radius: 0px;
+	border-width: medium;
+	padding: 1px 12px;
+	margin-top: 4px;
 }

@@ -4,7 +4,7 @@
 	<div class="col-md-offset-1 col-md-10">	
 	 <div class="panel panel-default">
 	 <div class="panel-heading">
-	  <p style="font-size:18pt; color:#000000; font-weight:bold; margin:0px;"><%= @pin.title %>
+	  <p style="font-size:18pt; color:#000000; font-weight:bold; margin:0px;"><%= @pin.title %></p>
 
 <% if user_signed_in? %>
  <% if @pin.user == current_user %>
@@ -12,11 +12,15 @@
  <% else %>
   <% unless current_user.favorites.exists?(id: @pin.id) %>
    <%= link_to favorite_pin_path(@pin, type: "favorite"), method: :put do %>
-   <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">FOLLOW THIS LIST</div>
+    <button type="button" class="btn btn-default btn-blocal">
+    FOLLOW THIS LIST
+    </button>
    <% end %>
   <% else %>
    <%= link_to favorite_pin_path(@pin, type: "unfavorite"), method: :put do %>
-   <div style="font-size: 8pt; font-weight: bold; margin:5px 0 0 0; border-color: #000000; border-style: solid; width:140px; padding: 0 5px 0 5px; text-align:center;">FOLLOWING THIS LIST</div>
+     <button type="button" class="btn btn-default btn-blocal">
+    UNFOLLOW THIS LIST
+    </button>
    <% end %>
   <% end %> 
  <% end %> 
@@ -27,7 +31,6 @@
 
 <% end %> 
 
-	  </p>
 	 </div>
 	 <div class="panel-body">
 	  <p style="color:#333; font-size:15px; line-height:1.8"><%= @pin.description %></p>
