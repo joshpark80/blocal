@@ -14,11 +14,11 @@
   <div class="unfavorite"><span class="glyphicon glyphicon-heart"></span></div>
   <% end %>
 <% end %> 
-            
-        <div class="panel-body">
+
+         <div class="panel-body">
           <p style="font-size: 12pt; font-weight:bold;"><%= comment.place_name %></p>
-          <p style="font-size: 10pt;"><%= comment.body.truncate(150) %></p>
-          <p style="font-size: 10pt;">updated at <%= time_ago_in_words(comment.updated_at) %> ago</p> 
+          <p style="font-size: 10pt; color:#666;"><%= comment.body.truncate(150) %></p>
+          <p style="font-size: 9pt; color:#999;">updated at <%= time_ago_in_words(comment.updated_at) %> ago</p> 
        </div>
       </div>
     <% end %>

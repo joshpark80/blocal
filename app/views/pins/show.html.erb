@@ -34,8 +34,16 @@
 	 </div>
 	 <div class="panel-body">
 	  <p style="color:#333; font-size:15px; line-height:1.8"><%= @pin.description %></p>
-	  updated at <%= time_ago_in_words(@pin.updated_at) %> ago</p> 
-        <div class="profile showprofile">by <a href="/<%= @pin.user.name %>"><strong><%= @pin.user.name.truncate(15) if @pin.user %> </strong><%= image_tag(@pin.user.image.url(:thumb)) %></a></div>
+
+<div style="margin-bottom: 40px; margin-top:20px;"> 
+        <div class="profile showprofile" style="float:left; display:inline-block;"> <a href="/<%= @pin.user.name %>" style="font-size:13px; color: #666;"><%= image_tag(@pin.user.image.url(:thumb)) %></a>
+        </div>
+        <div style="display: inline-block; margin-top:5px; margin-left:5px;">
+        <a href="/<%= @pin.user.name %>" style="font-size:13px; color: #666;"><strong>by <%= @pin.user.name.truncate(15) if @pin.user %> </strong></a> 
+        <p style="color:#999; font-size: 12px;"><%= time_ago_in_words(@pin.updated_at) %> ago</p>
+        </div>
+</div>
+
 
 
 	<% if user_signed_in? %>
@@ -50,6 +58,8 @@
       <% end %>
 	 <% end %>
 	<% end %>
+
+
 	 </div>
  	</div>
  <div>
