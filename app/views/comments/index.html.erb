@@ -5,6 +5,8 @@
      <div class="box panel panel-default">
             <%= link_to image_tag(comment.image.url(:medium)), [comment.pin, comment] %>
 
+<% if user_signed_in? %>
+
 <% unless current_user.collects.exists?(id: comment.id) %>
   <%= link_to collect_comment_path(comment, type: "collect"), method: :put do %>
   <div class="favorite"><span class="glyphicon glyphicon-heart"></span></div>
@@ -13,6 +15,10 @@
   <%= link_to collect_comment_path(comment, type: "uncollect"), method: :put do %>
   <div class="unfavorite"><span class="glyphicon glyphicon-heart"></span></div>
   <% end %>
+<% end %> 
+
+<% else %>
+
 <% end %> 
 
          <div class="panel-body">
