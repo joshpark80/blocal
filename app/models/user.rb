@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :pins 
-  has_attached_file :image, :styles => { :medium => "100x100#", :thumb => "50x50#" }
+  has_attached_file :image, :styles => { :medium => "100x100#", :thumb => "50x50#" }, 
+  :default_url => "https://s3.amazonaws.com/b_local/users/images/default/:style/default_avatar.jpg"
   do_not_validate_attachment_file_type :image
 
   has_many :favorite_pins, foreign_key:"favorited_id"  
