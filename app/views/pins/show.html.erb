@@ -68,10 +68,9 @@
 	 </div>
 
  	</div>
- </div>
-</div>
 
-<div class="row">
+
+
 <%= render "comments/comment" %>	
 <% if user_signed_in? %>
 	<% if @pin.user == current_user %>
@@ -100,6 +99,8 @@
 </div>
 	<% end %>
 <% end %>
+
+ </div>
 </div>
 
 
