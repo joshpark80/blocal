@@ -56,13 +56,20 @@
         <span class="glyphicon glyphicon-trash"></span>
         Delete
       <% end %>
+   <% else %>
+
 	 <% end %>
+
+  <% else %>
+
 	<% end %>
 
 
 	 </div>
+
  	</div>
- <div>
+ </div>
+</div>
 
 <%= render "comments/comment" %>
 	
@@ -84,15 +91,19 @@
         <h4 class="modal-title" id="myModalLabel">ADD A NEW PLACE</h4>
       </div>
       <div class="modal-body">
-	<%= render "comments/form" %>
+  <%= render "comments/form" %>
       </div>
     </div>
   </div>
 </div>
 
 </div>
+  <% else %>
 
 	<% end %>
+
+<% else %>
+
 <% end %>
 
 
