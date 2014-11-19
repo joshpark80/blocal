@@ -112,9 +112,16 @@
 	  <p style="font-size:15px; color:#333; line-height:1.8;"><%= @comment.body %></p>
 	  <p style="font-size:12px; color:#666;">updated at <%= @comment.updated_at.to_formatted_s(:long) %></p>
 	  </br>
-      <p><%= @comment.address %></p>
       <p><%= @comment.phone %></p>
       <p><%= @comment.additional %></p>
+      <p><%= @comment.address %><%= @comment.map %></p>
+
+<div class="google-maps">
+<iframe
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCGLtPl9loLpu1AuKVSHj0HCfcVyDcQX0Y&q=<%= @comment.address %>">
+</iframe>
+</div>
 
   <% if user_signed_in? %>
    <% if @pin.user == current_user %>

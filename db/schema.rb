@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927152236) do
+ActiveRecord::Schema.define(version: 20141119020440) do
 
   create_table "collect_comments", force: true do |t|
     t.integer  "collect_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140927152236) do
     t.string   "photo4_content_type"
     t.integer  "photo4_file_size"
     t.datetime "photo4_updated_at"
+    t.text     "map"
   end
 
   add_index "comments", ["pin_id"], name: "index_comments_on_pin_id"

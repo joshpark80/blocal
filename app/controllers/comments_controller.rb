@@ -70,6 +70,6 @@ class CommentsController < ApplicationController
     end  
     
     def comment_params
-      params.require(:comment).permit(:pin_id, :comment, :body, :image, :photo, :photo2, :photo3, :photo4, :place_name, :neighborhood, :country, :city, :keyword, :address, :phone, :keyword, :additional)
+      params.require(:comment).permit(:pin_id, :comment, :body, :image, :photo, :photo2, :photo3, :photo4, :place_name, :neighborhood, :country, :city, :keyword, :address, :map, :phone, :keyword, :additional)
     end
 end
